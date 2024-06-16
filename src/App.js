@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+
 import './App.css';
+import MyNavbar from './components/myNavbar';
+import Scheda_menu from './components/scheda_menu';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <MyNavbar/>
+      <div className="container py-4">
+        <h3 style="text-align: center">Cosa desideri ordinare?</h3>
+        <hr/>
+        <div className="row">
+<Scheda_menu title={"Pasta col sugo"}/>
+<Scheda_menu title={"Pasta senza sugo"}/>
+<Scheda_menu title={"Sugo senza pasta"}/>
+        </div>
+      </div>
+    </>
   );
 }
 
