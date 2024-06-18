@@ -9,24 +9,38 @@ import piatto1 from '../images/draniki.jpeg';
 import piatto2 from '../images/shuba.jpg';
 import dolce1 from '../images/napoleon.jpg';
 import dolce2 from '../images/honey_cake.jpg';
+import aperitivo1 from '../images/ikra.jpg';
+import aperitivo2 from '../images/narezka.jpg';
+import aperitivo3 from '../images/shashlyk.jpg';
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 class App3_cs extends Component {
-  counter = 0;
+  //counter = 0;
 
   categorie = [
     "primi",
     "secondi",
     "dolci"
   ];
+  formulaPasti=[
+    "formula colazione",
+    "formula pranzo",
+    "formula aperitivo"
+  ]
 
   state = {
     piatti: [
-      { id: 1, name: "Borshcht", image: zuppa1, descr: "Zuppa densa a base di barbabietole", testo_btn1: "Elimina", testo_btn2: "Ordina", categoria: this.categorie[0], prezzo: 8.50, quantity: 0, stato: 1 },
-      { id: 2, name: "Shchi", image: zuppa2, descr: "Zuppa rustica e saporita a base di cavolo", testo_btn1: "Elimina", testo_btn2: "Ordina", categoria: this.categorie[0], prezzo: 9.50, quantity: 0, stato: 1 },
-      { id: 3, name: "Aringa sotto una coperta", image: piatto2, descr: "Insalata stratificata di aringhe salate con verdure e uova", testo_btn1: "Elimina", testo_btn2: "Ordina", categoria: this.categorie[1], prezzo: 7.50, quantity: 0, stato: 1 },
-      { id: 4, name: "Draniki", image: piatto1, descr: "Frittelle di patate", testo_btn2: "Ordina", testo_btn1: "Elimina", categoria: this.categorie[1], prezzo: 8.50, quantity: 0, stato: 1 },
-      { id: 5, name: "Napoleon", image: dolce1, descr: "Torta di pasta sfoglia e crema pasticcera", testo_btn1: "Elimina", testo_btn2: "Ordina", categoria: this.categorie[2], prezzo: 9.50, quantity: 0, stato: 1 },
-      { id: 6, name: "Torta al miele", image: dolce2, descr: "Torta di pasta al miele con una crema leggera", testo_btn1: "Elimina", testo_btn2: "Ordina", categoria: this.categorie[2], prezzo: 7.50, quantity: 0, stato: 1 }
+      { id: 1, name: "Borshcht", image: zuppa1, descr: "Zuppa densa a base di barbabietole", testo_btn1: "Elimina", testo_btn2: "Ordina", categoria: this.categorie[0], formula:this.formulaPasti[1], prezzo: 8.50, quantity: 0, stato: 1 },
+      { id: 2, name: "Shchi", image: zuppa2, descr: "Zuppa rustica e saporita a base di cavolo", testo_btn1: "Elimina", testo_btn2: "Ordina", categoria: this.categorie[0],  formula:this.formulaPasti[1],prezzo: 9.50, quantity: 0, stato: 1 },
+      { id: 3, name: "Aringa sotto una coperta", image: piatto2, descr: "Insalata stratificata di aringhe salate con verdure e uova", testo_btn1: "Elimina", testo_btn2: "Ordina", categoria: this.categorie[1],  formula:this.formulaPasti[1], prezzo: 7.50, quantity: 0, stato: 1 },
+      { id: 4, name: "Draniki", image: piatto1, descr: "Frittelle di patate", testo_btn2: "Ordina", testo_btn1: "Elimina", categoria: this.categorie[1],  formula:this.formulaPasti[1], prezzo: 8.50, quantity: 0, stato: 1 },
+      { id: 5, name: "Napoleon", image: dolce1, descr: "Torta di pasta sfoglia e crema pasticcera", testo_btn1: "Elimina", testo_btn2: "Ordina", categoria: this.categorie[2],  formula:this.formulaPasti[0], prezzo: 9.50, quantity: 0, stato: 1 },
+      { id: 6, name: "Torta al miele", image: dolce2, descr: "Torta di pasta al miele con una crema leggera", testo_btn1: "Elimina", testo_btn2: "Ordina", categoria: this.categorie[2],  formula:this.formulaPasti[0],prezzo: 7.50, quantity: 0, stato: 1 },
+      { id: 7, name: "Shashlik", image: aperitivo3, descr: "Spiedini di carne marinata", testo_btn1: "Elimina", testo_btn2: "Ordina", categoria: this.categorie[1],  formula:this.formulaPasti[2], prezzo: 8.50, quantity: 0, stato: 1 },
+      { id: 8, name: "Affettato misto", image: aperitivo2, descr: "Prosciutto, pancetta con verdure sottaceti", testo_btn1: "Elimina", testo_btn2: "Ordina", categoria: this.categorie[1],  formula:this.formulaPasti[2],prezzo: 9.50, quantity: 0, stato: 1 },
+      { id: 9, name: "Tartine con caviale rosso", image: aperitivo1, descr: "Fette di baguette leggermente imburrate e guarnite con caviale rosso", testo_btn1: "Elimina", testo_btn2: "Ordina", categoria: this.categorie[1],  formula:this.formulaPasti[2], prezzo: 7.50, quantity: 0, stato: 1 }
     ],
     prezzo_finale: 0
   };
@@ -45,6 +59,7 @@ class App3_cs extends Component {
   }
 
   add_in_carello = (id_to_add) => {
+    
     // Use setState to update the state based on the previous state
     this.setState(prevState => {
       // Create a new array of piatti with the quantity updated for the specific piatto
@@ -128,16 +143,16 @@ class App3_cs extends Component {
         <div className="container py-4 ">
           <h3 style={{ textAlign: 'center' }}>Cosa desideri ordinare?</h3>
           <hr />
-
+ 
           <div className="row " style={{ padding: '1%' }}>
             <div className="col-9" style={{ textAlign: 'center' }}>
               <div className="row" style={{ padding: '1%' }}>
                 <div className="py-2" >
-                  {this.categorie.map((categoria, index) => {
+                  {this.categorie.map((categoria) => {
                     const isCategoryVisible = this.state.piatti.some(piatto => piatto.categoria === categoria && piatto.stato === 1);
                     return (
                       <button
-                        key={index}
+                       
                         style={{ margin: '10px' }}
                         className={`btn ${isCategoryVisible ? 'btn-outline-danger' : 'btn-danger'}`}
                         onClick={() => this.cambia_stato_categoria(categoria)}
@@ -176,7 +191,7 @@ class App3_cs extends Component {
                       {this.state.piatti
                         .filter(piatto => piatto.quantity > 0)
                         .map((piatto, counter) => {
-                          counter += 1;
+                          //counter += 1;
                           return <Carello key={piatto.id} count={counter} card={piatto} elimina_dal_carello={() => this.delete_from_carello(piatto.id)} aggiungi_in_carello={() => this.add_in_carello(piatto.id)} />;
                         })}
                     </tbody>
