@@ -118,7 +118,16 @@ class App4_cs extends Component {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout VettoreLink={this.ArrayLink} />}>
+          <Route path="/" element={<Layout 
+          VettoreLink={this.ArrayLink} 
+          categorie={this.categorie}
+          formulaPasti={this.formulaPasti}
+          state={this.state}
+          cambia_stato_categoria={this.cambia_stato_categoria}
+          add_in_carello={this.add_in_carello}
+          delete_from_carello={this.delete_from_carello}
+          ripristina_all_cards={this.ripristina_all_cards}
+          />}>
             <Route
               index
               element={<PrimaPagina
